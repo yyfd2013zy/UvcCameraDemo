@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="gl_mirror" format="integer" />
+    <attr name="gl_index" format="integer" />
+    <declare-styleable name="GLView">
+        <attr name="gl_mirror" />
+        <attr name="gl_index" />
+    </declare-styleable>
+</resources>

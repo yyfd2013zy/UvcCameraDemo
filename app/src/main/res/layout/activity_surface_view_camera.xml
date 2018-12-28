@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~  UVCCamera
+  ~  library and sample to access to UVC web camera on non-rooted Android device
+  ~
+  ~ Copyright (c) 2014-2017 saki t_saki@serenegiant.com
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~   You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~   Unless required by applicable law or agreed to in writing, software
+  ~   distributed under the License is distributed on an "AS IS" BASIS,
+  ~   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~   See the License for the specific language governing permissions and
+  ~   limitations under the License.
+  ~
+  ~  All files in the folder are under this Apache License, Version 2.0.
+  ~  Files in the libjpeg-turbo, libusb, libuvc, rapidjson folder
+  ~  may have a different license, see the respective files.
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff000000"
+    tools:context="com.vinda.ucvcamera.MainActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击屏幕选择相机"
+        android:textColor="#FFFF0000" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/textView1"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:baselineAligned="false" >
+
+            <RelativeLayout
+                android:id="@+id/camera_layout_first"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <com.serenegiant.widget.UVCCameraTextureView
+                    android:id="@+id/camera_view_first"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true" />
+
+                <ImageView
+                    android:id="@+id/frame_image_first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/camera_view_first"
+                    android:layout_alignLeft="@+id/camera_view_first"
+                    android:layout_alignRight="@+id/camera_view_first"
+                    android:layout_alignTop="@+id/camera_view_first"
+                    android:src="@drawable/border" />
+                <ImageButton
+                    android:id="@+id/capture_button_first"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
+                    android:layout_alignBottom="@id/camera_view_first"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="6dp"
+                    android:background="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@android:drawable/ic_menu_camera" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/camera_layout_second"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <com.serenegiant.widget.UVCCameraTextureView
+                    android:id="@+id/camera_view_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true" />
+
+                <ImageView
+                    android:id="@+id/frame_image_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/camera_view_second"
+                    android:layout_alignLeft="@+id/camera_view_second"
+                    android:layout_alignRight="@+id/camera_view_second"
+                    android:layout_alignTop="@+id/camera_view_second"
+                    android:src="@drawable/border" />
+                <ImageButton
+                    android:id="@+id/capture_button_second"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
+                    android:layout_alignBottom="@id/frame_image_second"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="6dp"
+                    android:background="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@android:drawable/ic_menu_camera" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:baselineAligned="false" >
+
+            <RelativeLayout
+                android:id="@+id/camera_layout_third"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <com.serenegiant.widget.UVCCameraTextureView
+                    android:id="@+id/camera_view_third"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true" />
+
+                <ImageView
+                    android:id="@+id/frame_image_third"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/camera_view_third"
+                    android:layout_alignLeft="@+id/camera_view_third"
+                    android:layout_alignRight="@+id/camera_view_third"
+                    android:layout_alignTop="@+id/camera_view_third"
+                    android:src="@drawable/border" />
+                <ImageButton
+                    android:id="@+id/capture_button_third"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
+                    android:layout_alignBottom="@id/camera_view_third"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="6dp"
+                    android:background="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@android:drawable/ic_menu_camera" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/camera_layout_fourth"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <com.serenegiant.widget.UVCCameraTextureView
+                    android:id="@+id/camera_view_fourth"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true" />
+
+                <ImageView
+                    android:id="@+id/frame_image_fourth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/camera_view_fourth"
+                    android:layout_alignLeft="@+id/camera_view_fourth"
+                    android:layout_alignRight="@+id/camera_view_fourth"
+                    android:layout_alignTop="@+id/camera_view_fourth"
+                    android:src="@drawable/border" />
+                <ImageButton
+                    android:id="@+id/capture_button_fourth"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
+                    android:layout_alignBottom="@id/frame_image_fourth"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="6dp"
+                    android:background="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@android:drawable/ic_menu_camera" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:baselineAligned="false" >
+
+            <RelativeLayout
+                android:id="@+id/camera_layout_fifth"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <com.serenegiant.widget.UVCCameraTextureView
+                    android:id="@+id/camera_view_fifth"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true" />
+
+                <ImageView
+                    android:id="@+id/frame_image_fifth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/camera_view_fifth"
+                    android:layout_alignLeft="@+id/camera_view_fifth"
+                    android:layout_alignRight="@+id/camera_view_fifth"
+                    android:layout_alignTop="@+id/camera_view_fifth"
+                    android:src="@drawable/border" />
+                <ImageButton
+                    android:id="@+id/capture_button_fifth"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
+                    android:layout_alignBottom="@id/camera_view_fifth"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="6dp"
+                    android:background="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@android:drawable/ic_menu_camera" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/camera_layout_sixth"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <com.serenegiant.widget.UVCCameraTextureView
+                    android:id="@+id/camera_view_sixth"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true" />
+
+                <ImageView
+                    android:id="@+id/frame_image_sixth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/camera_view_sixth"
+                    android:layout_alignLeft="@+id/camera_view_sixth"
+                    android:layout_alignRight="@+id/camera_view_sixth"
+                    android:layout_alignTop="@+id/camera_view_sixth"
+                    android:src="@drawable/border" />
+                <ImageButton
+                    android:id="@+id/capture_button_sixth"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
+                    android:layout_alignBottom="@id/camera_view_sixth"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="6dp"
+                    android:background="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@android:drawable/ic_menu_camera" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>
